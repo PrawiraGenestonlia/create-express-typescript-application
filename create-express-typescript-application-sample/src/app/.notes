@@ -1,0 +1,2 @@
+To enable auto import, you have to create routes in the src/app/ folder with the extended file name *.router.ts.
+Please refer to src/app/sample as sample folder
