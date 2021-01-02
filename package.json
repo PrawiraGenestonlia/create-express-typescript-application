@@ -1,7 +1,7 @@
 {
   "name": "create-express-typescript-application",
-  "version": "1.1.4",
-  "description": "Create new light weight Express application with typescript",
+  "version": "1.1.5",
+  "description": "Create a new lightweight Express application with TypeScript",
   "main": "index.js",
   "scripts": {
     "create-express-typescript-application": "node index.js",
@@ -37,8 +37,10 @@
   },
   "homepage": "https://github.com/PrawiraGenestonlia/create-express-typescript-application#readme",
   "dependencies": {
-    "edit-json-file": "^1.3.2",
+    "child_process": "^1.0.2",
+    "edit-json-file": "^1.5.0",
     "fs-extra": "^9.0.1",
-    "ncp": "^2.0.0"
+    "ncp": "^2.0.0",
+    "path": "^0.12.7"
   }
 }
