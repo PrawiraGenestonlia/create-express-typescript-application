@@ -9,7 +9,7 @@ create-[express](https://www.npmjs.com/package/express)-[typescript](https://www
 ## Why _create-express-typescript-application_?
 
 _create-express-typescript-application_ creates a new lightweight express application which is fully customizable for your use case. 
-With the support of Typescript, it allows a robust NodeJS express app to serve as an RESTful backend server.
+With the support of TypeScript, it allows a robust NodeJS express app to serve as an RESTful backend server.
 
 ## Application Details
 

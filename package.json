@@ -1,12 +1,17 @@
 {
   "name": "create-express-typescript-application",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Create a new lightweight Express application with TypeScript",
   "main": "index.js",
   "scripts": {
     "create-express-typescript-application": "node index.js",
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "app:dev": "cd create-express-typescript-application-sample && npm run dev",
+    "install:all": "concurrently \"npm i\" \"npm run install:ceta\"",
+    "install:ceta": "cd create-express-typescript-application-sample && npm i",
+    "cleanup": "rimraf ./create-express-typescript-application-sample/node_modules && rimraf ./create-express-typescript-application-sample/package-lock.json",
+    "deploy": "npm run cleanup && npm publish"
   },
   "bin": {
     "create-express-typescript-application": "index.js"
@@ -38,9 +43,11 @@
   "homepage": "https://github.com/PrawiraGenestonlia/create-express-typescript-application#readme",
   "dependencies": {
     "child_process": "^1.0.2",
+    "concurrently": "^5.3.0",
     "edit-json-file": "^1.5.0",
     "fs-extra": "^9.0.1",
     "ncp": "^2.0.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "rimraf": "^3.0.2"
   }
 }
