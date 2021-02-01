@@ -1,4 +1,5 @@
 import express, { Express } from 'express';
+import { PrismaClient } from '@prisma/client';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import cors from 'cors';
@@ -48,4 +49,5 @@ app.use((err: Error, req: express.Request, res: express.Response, next: express.
   });
 });
 
+export const prisma = new PrismaClient();
 export default app;
