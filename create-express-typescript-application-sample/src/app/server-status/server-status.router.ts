@@ -7,23 +7,16 @@ export const router: Router = Router();
 // getStatus
 router.get(SERVER_STATUS_ENDPOINT + "/", (req, res) => {
   res.status(200).send({
-    "status": "server is running",
-    "serverTime": new Date().toISOString()
+    "status": "server is running"
   });
 });
 
 // getRoutes
-router.get(SERVER_STATUS_ENDPOINT + "/routes", async (req, res) => {
-  console.log(new Date().toISOString())
-  getRoutes().then(routes => {
-    res.status(200).send({
-      numberOfRoutes: routes.length,
-      routes: routes
-    });
-  }).catch(e => {
-    res.status(500).send({
-      error: e
-    });
+router.get(SERVER_STATUS_ENDPOINT + "/routes", (req, res) => {
+  const routes = getRoutes();
+  res.status(200).send({
+    numberOfRoutes: routes.length,
+    routes: routes
   });
 });
 
