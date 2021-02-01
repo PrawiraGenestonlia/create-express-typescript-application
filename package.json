@@ -10,7 +10,8 @@
     "app:dev": "cd create-express-typescript-application-sample && npm run dev",
     "install:all": "concurrently \"npm i\" \"npm run install:ceta\"",
     "install:ceta": "cd create-express-typescript-application-sample && npm i",
-    "cleanup": "rimraf ./create-express-typescript-application-sample/node_modules && rimraf ./create-express-typescript-application-sample/package-lock.json && rimraf ./create-express-typescript-application-sample/prisma/migrations && rimraf ./create-express-typescript-application-sample/prisma/dev.db ",
+    "precleanup": "rimraf ./create-express-typescript-application-sample/node_modules && rimraf ./create-express-typescript-application-sample/package-lock.json ",
+    "cleanup": "rimraf ./create-express-typescript-application-prisma-sample/node_modules && rimraf ./create-express-typescript-application-prisma-sample/package-lock.json && rimraf ./create-express-typescript-application-prisma-sample/prisma/migrations && rimraf ./create-express-typescript-application-prisma-sample/prisma/dev.db ",
     "deploy": "npm run cleanup && npm publish"
   },
   "bin": {
