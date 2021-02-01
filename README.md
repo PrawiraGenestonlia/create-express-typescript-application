@@ -48,6 +48,17 @@ Or build your application and serve it.
 $ cd "project name" && npm run build && npm start
 ```
 
+## List of options.
+
+Options:
+  -V, --version      output the version number
+  -d, --debug        output extra debugging
+  -t, --type <type>  specify only prisma or plain
+  -p, --prisma       define type prisma
+  -h, --help         display help for command
+
+Prisma options integrates prisma ORM into the lightweight express typescript app.
+
 ## Available commands for the server.
 
 - Run the server in development mode: `npm run dev`.

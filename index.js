@@ -34,7 +34,7 @@ const generateApp = require('./helper');
 // })();
 
 const program = new Command();
-program.version('2.0.1');
+program.version('2.0.3');
 
 program
     .option('-d, --debug', 'output extra debugging')
