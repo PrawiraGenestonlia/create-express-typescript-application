@@ -34,8 +34,16 @@ process.on('uncaughtException', handleError);
  * 
  * @param folderDestination 
  */
-const copyProjectFiles = (folderDestination) => {
-    const source = path.join(__dirname, './create-express-typescript-application-sample');
+const copyProjectFiles = (folderDestination, type) => {
+    let originalFolder = '';
+
+    if (type === 'prisma') {
+        originalFolder = './create-express-typescript-application-prisma-sample';
+    } else if (type === 'plain') {
+        originalFolder = './create-express-typescript-application-sample';
+    }
+
+    const source = path.join(__dirname, originalFolder);
     return new Promise((resolve, reject) => {
         ncp.limit = 16;
         ncp(source, folderDestination, function (err) {
@@ -79,6 +87,8 @@ const downloadNodeModules = (folderPath, d) => {
     const options = { cwd: folderPath };
     childProcess.execSync('npm i -s ' + d.dependencies, options);
     childProcess.execSync('npm i -D ' + d.devDependencies, options);
+    childProcess.execSync('npm i', options);
+
 }
 
 const checkGitIgnore = (appPath) => {
@@ -155,9 +165,9 @@ const tryGitCommit = (folderPath) => {
  * Entry point
  * @param folderName 
  */
-const generateApp = async (folderName) => {
+const generateApp = async (folderName, type = 'plain') => {
     try {
-        await copyProjectFiles(folderName);
+        await copyProjectFiles(folderName, type);
         updatePackageJson(folderName);
         downloadNodeModules(folderName, getDepStrings());
         checkGitIgnore(folderName);

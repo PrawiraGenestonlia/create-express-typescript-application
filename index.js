@@ -10,20 +10,62 @@
 'use strict';
 
 const path = require('path');
+const { Command } = require('commander');
 const generateApp = require('./helper');
 
-(() => {
-    // Get project name
-    if (process.argv.length !== 3) {
-        throw Error('Wrong number of arguments!');
+// (() => {
+//     // Get project name
+//     if (process.argv.length !== 3) {
+//         throw Error('Wrong number of arguments!');
+//     }
+//     let projectName = path.join(process.cwd(), process.argv[2] || 'express-app');
+
+//     // Creating new project started
+//     console.log('Setting up new Express with typescript support app...');
+
+//     // Creating new project finished
+//     generateApp(projectName).then(() => {
+//         console.log('Application has been created!');
+//     });
+// })();
+
+// (() => {
+//     console.log("TEST");
+// })();
+
+const program = new Command();
+program.version('2.0.1');
+
+program
+    .option('-d, --debug', 'output extra debugging')
+    .option('-t, --type <type>', 'specify only prisma or plain')
+    .option('-p, --prisma', 'define type prisma');
+
+program.parse(process.argv);
+
+const options = program.opts();
+if (options.debug) console.log(options);
+
+if (program.args.length !== 1) {
+    throw Error('Wrong number of arguments!');
+}
+
+let type = 'plain'
+
+if (options.prisma) {
+    type = 'prisma';
+} else if (options.type) {
+    if (options.type === 'prisma' || options.type === 'plain') {
+        type = options.type;
+    } else {
+        throw Error('Wrong type!');
     }
-    let projectName = path.join(process.cwd(), process.argv[2] || 'express-app');
+}
 
-    // Creating new project started
-    console.log('Setting up new Express with typescript support app...');
+// Creating new project started
+console.log('Setting up new Express with typescript support app...');
 
-    // Creating new project finished
-    generateApp(projectName).then(() => {
-        console.log('Application has been created!');
-    });
-})();
+// Creating new project finished
+generateApp(program.args[0], type).then(() => {
+    console.log('Application has been created!');
+});
