@@ -1,6 +1,6 @@
 {
   "name": "create-express-typescript-application",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "Create a new lightweight Express application with TypeScript",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "install:all": "concurrently \"npm i\" \"npm run install:ceta\"",
     "install:ceta": "cd create-express-typescript-application-sample && npm i",
     "precleanup": "rimraf ./create-express-typescript-application-sample/node_modules && rimraf ./create-express-typescript-application-sample/package-lock.json ",
-    "cleanup": "rimraf ./create-express-typescript-application-prisma-sample/node_modules && rimraf ./create-express-typescript-application-prisma-sample/package-lock.json && rimraf ./create-express-typescript-application-prisma-sample/prisma/migrations && rimraf ./create-express-typescript-application-prisma-sample/prisma/dev.db ",
+    "cleanup": "rimraf ./create-express-typescript-application-prisma-sample/node_modules && rimraf ./create-express-typescript-application-prisma-sample/package-lock.json && rimraf ./create-express-typescript-application-prisma-sample/prisma/migrations && rimraf ./create-express-typescript-application-prisma-sample/prisma/dev.db && rimraf ./create-express-typescript-application-prisma-sample/build ",
     "deploy": "npm run cleanup && npm publish"
   },
   "bin": {

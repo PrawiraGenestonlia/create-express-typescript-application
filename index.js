@@ -9,32 +9,11 @@
 
 'use strict';
 
-const path = require('path');
 const { Command } = require('commander');
 const generateApp = require('./helper');
 
-// (() => {
-//     // Get project name
-//     if (process.argv.length !== 3) {
-//         throw Error('Wrong number of arguments!');
-//     }
-//     let projectName = path.join(process.cwd(), process.argv[2] || 'express-app');
-
-//     // Creating new project started
-//     console.log('Setting up new Express with typescript support app...');
-
-//     // Creating new project finished
-//     generateApp(projectName).then(() => {
-//         console.log('Application has been created!');
-//     });
-// })();
-
-// (() => {
-//     console.log("TEST");
-// })();
-
 const program = new Command();
-program.version('2.0.3');
+program.version('2.1.0');
 
 program
     .option('-d, --debug', 'output extra debugging')
@@ -67,5 +46,5 @@ console.log('Setting up new Express with typescript support app...');
 
 // Creating new project finished
 generateApp(program.args[0], type).then(() => {
-    console.log('Application has been created!');
+    console.log(`Application has been created with ${type} template!`);
 });

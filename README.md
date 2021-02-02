@@ -8,8 +8,11 @@ create-[express](https://www.npmjs.com/package/express)-[typescript](https://www
 
 ## Why _create-express-typescript-application_?
 
-_create-express-typescript-application_ creates a new lightweight express application which is fully customizable for your use case. It is also integrated with a modern database ORM - prisma.
-With the support of TypeScript, it allows a robust NodeJS express app to serve as an RESTful backend server.
+_create-express-typescript-application_ creates a new lightweight express application which is fully customizable for your use case. With the support of TypeScript, it allows a robust NodeJS express app to serve as an RESTful backend server.
+
+There are two modes of _create-express-typescript-application_, mainly:
+1. **plain** mode - lightweight express typescript app (--type plain)
+2. **prisma** mode - fullweight express typescript app with prisma (relational database ORM) and swagger (OpenAPI documentation) integrated
 
 ## Application Details
 
@@ -25,6 +28,8 @@ $ Just use 'npx'
   Or
 $ npm install -g create-express-typescript-application
 $ create-express-typescript-application {project-name-without-spaces}
+# example (plain lightweight) $ create-express-typescript-application {project-name-without-spaces} -t plain
+# example (prisma fullweight) $ create-express-typescript-application {project-name-without-spaces} -t prisma
 ```
 
 ## Quick Start

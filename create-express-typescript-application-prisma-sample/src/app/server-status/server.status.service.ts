@@ -1,7 +1,7 @@
 import app from '../../app';
 
 export const getRoutes = () => {
-  return new Promise<Array<string>>((resolve, reject) => {
+  return new Promise<Array<any>>((resolve, reject) => {
     try {
       let route: any;
       const routes: Array<any> = [];

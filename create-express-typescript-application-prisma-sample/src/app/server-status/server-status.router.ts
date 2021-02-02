@@ -1,30 +1,21 @@
-import { Router } from 'express';
-import { SERVER_STATUS_ENDPOINT } from '../../constants/endpoint';
+import { Controller, Get, Route, Tags } from 'tsoa';
 import { getRoutes } from './server.status.service';
 
-export const router: Router = Router();
+@Tags('Server Status')
+@Route('/api/server-status')
+export class ServerStatusController extends Controller {
 
-// getStatus
-router.get(SERVER_STATUS_ENDPOINT + "/", (req, res) => {
-  res.status(200).send({
-    "status": "server is running",
-    "serverTime": new Date().toISOString()
-  });
-});
+  @Get('/')
+  public async getServerStatus(): Promise<{ status: string, serverTime: string }> {
+    return {
+      "status": "server is running",
+      "serverTime": new Date().toISOString()
+    }
+  }
 
-// getRoutes
-router.get(SERVER_STATUS_ENDPOINT + "/routes", async (req, res) => {
-  console.log(new Date().toISOString())
-  getRoutes().then(routes => {
-    res.status(200).send({
-      numberOfRoutes: routes.length,
-      routes: routes
-    });
-  }).catch(e => {
-    res.status(500).send({
-      error: e
-    });
-  });
-});
+  @Get('/routes')
+  public async getServerRoutes(): Promise<any> {
+    return getRoutes()
+  }
 
-
+}

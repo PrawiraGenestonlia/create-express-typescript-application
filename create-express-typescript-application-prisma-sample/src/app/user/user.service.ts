@@ -1,7 +1,7 @@
 import { User, Prisma } from '@prisma/client';
 import { prisma } from '../../app';
 
-export const getAllUser = async () => {
+export const getAllUser = () => {
   return new Promise<(User & { role: { role: string }[] })[]>((resolve, reject) => {
     try {
       const users = prisma.user.findMany({
@@ -20,7 +20,7 @@ export const getAllUser = async () => {
   })
 }
 
-export const createUser = async ({ email, roles }: { email: string, roles: { role: string }[] }) => {
+export const createUser = ({ email, roles }: { email: string, roles: { role: string }[] }) => {
   return new Promise<Prisma.Prisma__UserClient<User>>((resolve, reject) => {
     try {
       const user = prisma.user.create({
@@ -39,7 +39,7 @@ export const createUser = async ({ email, roles }: { email: string, roles: { rol
   })
 }
 
-export const updateUser = async ({ id, email, roles }: (User & { roles: { role: string }[] })) => {
+export const updateUser = ({ id, email, roles }: (User & { roles: { role: string }[] })) => {
   return new Promise<Prisma.Prisma__UserClient<User>>((resolve, reject) => {
     try {
       const user = prisma.user.update({
@@ -62,7 +62,7 @@ export const updateUser = async ({ id, email, roles }: (User & { roles: { role: 
   })
 }
 
-export const deleteUser = async ({ id }: { id: number }) => {
+export const deleteUser = ({ id }: { id: number }) => {
   return new Promise<Prisma.Prisma__UserClient<User>>((resolve, reject) => {
     try {
       const user = prisma.user.delete({

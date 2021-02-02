@@ -1,66 +1,30 @@
-import { Router } from 'express';
-import { USER_ENDPOINT } from '../../constants/endpoint';
+import { Body, Controller, Delete, Get, Post, Put, Query, Route, Tags } from 'tsoa';
 import { getAllUser, createUser, updateUser, deleteUser } from './user.service';
+import { User } from '@prisma/client';
 
-// Export module for registering router in express app
-export const router: Router = Router();
+@Tags('User Permission')
+@Route('/api/user-permission')
+export class UserPermissionController extends Controller {
 
-// Define your routes here
-router.get(USER_ENDPOINT + "/", (req, res) => {
-  getAllUser().then((users) => {
-    res.status(200).send({
-      users: users
-    });
-  }).catch((e) => {
-    res.status(500).send({
-      error: e
-    });
-  });
-});
+  @Get('/get-all/')
+  public async getAllUser(): Promise<(User & { role: { role: string }[] })[]> {
+    return getAllUser()
+  }
 
-router.post(USER_ENDPOINT + "/", (req: any, res) => {
-  createUser({
-    email: req.body.email,
-    roles: req.body.roles
-  }).then(user => {
-    res.status(200).send({
-      ...user
-    });
-  }).catch(e => {
-    res.status(500).send({
-      error: e
-    });
-  });
-});
+  @Post('/create/')
+  public async createUser(@Body() body: { email: string, roles: { role: string }[] }): Promise<User> {
+    return createUser({ email: body.email, roles: body.roles });
+  }
 
-router.put(USER_ENDPOINT + "/:id", (req, res) => {
-  updateUser({
-    id: Number(req.params.id),
-    email: req.body.email,
-    roles: req.body.roles
-  }).then(user => {
-    res.status(200).send({
-      ...user
-    });
-  }).catch(e => {
-    res.status(500).send({
-      error: e
-    });
-  });
-});
+  @Put('/update/{id}/')
+  public async updateUser(@Query('id') id: string, @Body() body: { email: string, roles: { role: string }[] }): Promise<User> {
+    return updateUser({ id: Number(id), email: body.email, roles: body.roles });
+  }
 
-router.delete(USER_ENDPOINT + "/:id", (req, res) => {
-  deleteUser({
-    id: Number(req.params.id)
-  }).then(user => {
-    res.status(200).send({
-      ...user
-    });
-  }).catch(e => {
-    res.status(500).send({
-      error: e
-    });
-  });
-});
+  @Delete('/delete/{id}/')
+  public async deleteUser(@Query('id') id: string): Promise<User> {
+    return deleteUser({ id: Number(id) });
+  }
 
+}
 

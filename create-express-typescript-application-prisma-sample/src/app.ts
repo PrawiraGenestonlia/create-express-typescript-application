@@ -3,8 +3,10 @@ import { PrismaClient } from '@prisma/client';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import cors from 'cors';
+import swaggerUi from 'swagger-ui-express';
 import config from '../config.json';
-import { getFilesWithKeyword } from './utils/getFilesWithKeyword';
+import { ValidateError } from 'tsoa';
+import { RegisterRoutes } from '../tsoa/routes';
 
 const app: Express = express();
 
@@ -31,22 +33,36 @@ if (process.env.NODE_ENV === 'production' || config.NODE_ENV === 'production') {
  *                               Register all routes
  ***********************************************************************************/
 
-getFilesWithKeyword('router', 'src/app').forEach((file: string) => {
-  const { router } = require(file.replace('src', '.'));
-  app.use('/', router);
-})
+RegisterRoutes(app);
+
+app.use("/docs", swaggerUi.serve, async (req: express.Request, res: express.Response) => {
+  return res.send(swaggerUi.generateHTML(await import("../tsoa/swagger.json")));
+});
 
 /************************************************************************************
  *                               Express Error Handling
  ***********************************************************************************/
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.use((err: Error, req: express.Request, res: express.Response, next: express.NextFunction) => {
-  return res.status(500).json({
-    errorName: err.name,
-    message: err.message,
-    stack: err.stack || 'no stack defined'
-  });
+  if (err instanceof ValidateError) {
+    console.error(`Caught Validation Error for ${req.path}:`, err.fields);
+    return res.status(422).json({
+      message: "Validation Failed",
+      details: err?.fields,
+    });
+  }
+  if (err instanceof Error) {
+    return res.status(500).json({
+      errorName: err.name,
+      message: err.message,
+      stack: err.stack || 'no stack defined'
+    });
+  }
+  next();
+});
+
+app.use(function notFoundHandler(_req, res: express.Response) {
+  return res.status(404).send({ message: "Not Found" });
 });
 
 export const prisma = new PrismaClient();
