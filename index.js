@@ -13,7 +13,7 @@ const { Command } = require('commander');
 const generateApp = require('./helper');
 
 const program = new Command();
-program.version('2.1.0');
+program.version('2.1.1');
 
 program
     .option('-d, --debug', 'output extra debugging')

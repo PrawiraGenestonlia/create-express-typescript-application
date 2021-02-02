@@ -22,7 +22,6 @@
     "typescript"
   ],
   "devDependencies": {
-    "@prisma/cli": "^2.15.0",
     "@types/cors": "^2.8.9",
     "@types/express": "^4.17.9",
     "@types/morgan": "^1.9.2",
@@ -46,6 +45,7 @@
     "fs": "0.0.1-security",
     "helmet": "^4.3.1",
     "morgan": "^1.10.0",
+    "prisma": "^2.16.0",
     "swagger-ui-express": "^4.1.6",
     "tsoa": "^3.5.1"
   }
