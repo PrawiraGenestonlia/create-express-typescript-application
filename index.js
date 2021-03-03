@@ -17,8 +17,8 @@ program.version('2.1.1');
 
 program
     .option('-d, --debug', 'output extra debugging')
-    .option('-t, --type <type>', 'specify only prisma or plain')
-    .option('-p, --prisma', 'define type prisma');
+    .option('-t, --template <template>', 'specify only prisma or plain')
+    .option('-p, --prisma', 'define template prisma');
 
 program.parse(process.argv);
 
@@ -29,15 +29,15 @@ if (program.args.length !== 1) {
     throw Error('Wrong number of arguments!');
 }
 
-let type = 'plain'
+let template = 'plain'
 
 if (options.prisma) {
-    type = 'prisma';
-} else if (options.type) {
-    if (options.type === 'prisma' || options.type === 'plain') {
-        type = options.type;
+    template = 'prisma';
+} else if (options.template) {
+    if (options.template === 'prisma' || options.template === 'plain') {
+        template = options.template;
     } else {
-        throw Error('Wrong type!');
+        throw Error('Wrong template!');
     }
 }
 
@@ -45,6 +45,6 @@ if (options.prisma) {
 console.log('Setting up new Express with typescript support app...');
 
 // Creating new project finished
-generateApp(program.args[0], type).then(() => {
-    console.log(`Application has been created with ${type} template!`);
+generateApp(program.args[0], template).then(() => {
+    console.log(`Application has been created with ${template} template!`);
 });

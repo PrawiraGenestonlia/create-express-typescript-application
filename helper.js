@@ -72,7 +72,7 @@ const updatePackageJson = (projectName) => {
  * Get all the dependencies
  */
 const getDepStrings = () => {
-    const dependencies = 'cors express fs helmet morgan';
+    const dependencies = 'cors express fs helmet morgan env-cmd';
     const devDependencies = '@types/cors @types/express @types/morgan @types/node @typescript-eslint/parser ' +
         '@typescript-eslint/eslint-plugin eslint nodemon ts-node typescript'
     return { dependencies, devDependencies };
