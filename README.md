@@ -5,7 +5,7 @@ create-[express](https://www.npmjs.com/package/express)-[typescript](https://www
 <a href="https://www.npmjs.com/package/create-express-typescript-application" target="_blank"><img src="https://img.shields.io/npm/v/create-express-typescript-application.svg" alt="NPM Version" /></a>
 <a href="https://www.npmjs.com/package/create-express-typescript-application" target="_blank"><img src="https://img.shields.io/npm/l/create-express-typescript-application.svg" alt="Package License" /></a>
 <a href="https://www.npmjs.com/package/create-express-typescript-application" target="_blank"><img src="https://img.shields.io/npm/dm/create-express-typescript-application.svg" alt="NPM Downloads" /></a>
-
+[![Wallaby.js](https://img.shields.io/badge/wallaby.js-powered-blue.svg?style=for-the-badge&logo=github)](https://wallabyjs.com/oss/)
 ## Why _create-express-typescript-application_?
 
 _create-express-typescript-application_ creates a new lightweight express application which is fully customizable for your use case. With the support of TypeScript, it allows a robust NodeJS express app to serve as an RESTful backend server.
