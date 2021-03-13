@@ -41,7 +41,7 @@ const copyProjectFiles = (folderDestination, type) => {
         originalFolder = './create-express-typescript-application-prisma-sample';
     } else if (type === 'plain') {
         originalFolder = './create-express-typescript-application-sample';
-    } else if (type === 'plain') {
+    } else if (type === 'typeorm') {
         originalFolder = './create-express-typescript-application-typeorm-sample';
     }
 
