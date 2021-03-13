@@ -10,9 +10,12 @@ create-[express](https://www.npmjs.com/package/express)-[typescript](https://www
 
 _create-express-typescript-application_ creates a new lightweight express application which is fully customizable for your use case. With the support of TypeScript, it allows a robust NodeJS express app to serve as an RESTful backend server.
 
-There are two modes of _create-express-typescript-application_, mainly:
+There are three modes of _create-express-typescript-application_, mainly:
 1. **plain** mode - lightweight express typescript app (--type plain)
-2. **prisma** mode - fullweight express typescript app with prisma (relational database ORM) and swagger (OpenAPI documentation) integrated
+2. **typeorm** mode - lightweight express typescript app with typeorm (sqlite included) and swagger (OpenAPI documentation) integrated
+3. **prisma** mode - fullweight express typescript app with prisma (relational database ORM) and swagger (OpenAPI documentation) integrated
+
+You are highly recommended to use typeorm template if database is required in this project, otherwise, plain mode.
 
 ## Application Details
 
@@ -29,6 +32,7 @@ $ Just use 'npx'
 $ npm install -g create-express-typescript-application
 $ create-express-typescript-application {project-name-without-spaces}
 # example (plain lightweight) $ create-express-typescript-application {project-name-without-spaces} -t plain
+# example (typeorm lightweight) $ create-express-typescript-application {project-name-without-spaces} -t typeorm
 # example (prisma fullweight) $ create-express-typescript-application {project-name-without-spaces} -t prisma
 ```
 
@@ -47,6 +51,7 @@ Start your express-app in development mode at `http://localhost:8080/`
 ```bash
 $ cd "project name" && npm run dev
 ```
+If swagger is included, you can view the swagger file at `http://localhost:8080/docs`
 
 Or build your application and serve it.
 ```bash
@@ -58,8 +63,9 @@ $ cd "project name" && npm run build && npm start
 Options:
   -V, --version      output the version number
   -d, --debug        output extra debugging
-  -t, --type <type>  specify only prisma or plain
+  -t, --template <type>  specify only prisma or plain or typeorm
   -p, --prisma       define type prisma
+  -y, --typeorm       define type typeorm
   -h, --help         display help for command
 
 Prisma options integrates prisma ORM into the lightweight express typescript app.

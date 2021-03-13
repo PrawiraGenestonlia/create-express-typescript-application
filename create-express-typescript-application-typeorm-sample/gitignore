@@ -1,0 +1,8 @@
+node_modules/
+build/
+logs/
+.env
+db.sqlite
+
+src/app/.notes
+

@@ -1,0 +1,55 @@
+{
+  "name": "create-express-typescript-application-sample",
+  "version": "0.0.1",
+  "description": "create-express-typescript-application-sample",
+  "main": "src/index.ts",
+  "scripts": {
+    "prestart": "npm run build",
+    "start": "node ./build/src/index.js",
+    "start:dev": "nodemon -w src -e ts -r tsconfig-paths/register --exec ts-node ./src/index.ts",
+    "dev": "concurrently \"npm run tsoa:generate_\" \"npm run start:dev\"",
+    "prebuild": "rimraf ./build && npm run tsoa:generate",
+    "build": "tsc",
+    "tsoa:generate_": "nodemon -w src -w prisma -e ts _generate-tsoa.js",
+    "tsoa:generate": "node _generate-tsoa.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "_moduleAliases": {
+    "@database": "src/database/index.ts",
+    "@entity": "src/database/entity/"
+  },
+  "keywords": [
+    "express",
+    "typescript"
+  ],
+  "devDependencies": {
+    "@types/cors": "^2.8.10",
+    "@types/express": "^4.17.11",
+    "@types/morgan": "^1.9.2",
+    "@types/node": "^14.14.31",
+    "@types/swagger-ui-express": "^4.1.2",
+    "@typescript-eslint/eslint-plugin": "^4.16.1",
+    "@typescript-eslint/parser": "^4.16.1",
+    "child_process": "^1.0.2",
+    "concurrently": "^6.0.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.21.0",
+    "nodemon": "^2.0.7",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "env-cmd": "^10.1.0",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "helmet": "^4.4.1",
+    "morgan": "^1.10.0",
+    "reflect-metadata": "^0.1.13",
+    "sqlite3": "^5.0.2",
+    "swagger-ui-express": "^4.1.6",
+    "tsconfig-paths": "^3.9.0",
+    "tsoa": "^3.5.2",
+    "typeorm": "^0.2.31"
+  }
+}

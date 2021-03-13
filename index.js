@@ -17,8 +17,10 @@ program.version('2.1.1');
 
 program
     .option('-d, --debug', 'output extra debugging')
-    .option('-t, --template <template>', 'specify only prisma or plain')
-    .option('-p, --prisma', 'define template prisma');
+    .option('-t, --template <template>', 'specify only prisma, plain or typeorm')
+    .option('-p, --prisma', 'define template prisma')
+    .option('-y, --typeorm', 'define template typeorm');
+
 
 program.parse(process.argv);
 
@@ -33,8 +35,10 @@ let template = 'plain'
 
 if (options.prisma) {
     template = 'prisma';
+} else if (options.typeorm) {
+    template = 'typeorm';
 } else if (options.template) {
-    if (options.template === 'prisma' || options.template === 'plain') {
+    if (options.template === 'prisma' || options.template === 'plain' || options.template === 'typeorm') {
         template = options.template;
     } else {
         throw Error('Wrong template!');
