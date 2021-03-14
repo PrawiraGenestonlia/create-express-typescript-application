@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "paths": {
-      "@database": ["database/index.ts"],
-      "@entity/*": ["database/entity/*"]
+      "@database": ["src/database"],
+      "@entity/*": ["src/database/entity/*"]
     },
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
