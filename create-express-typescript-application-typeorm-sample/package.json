@@ -15,8 +15,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "_moduleAliases": {
-    "@database": "src/database/index.ts",
-    "@entity": "src/database/entity/"
+    "@database": "./build/src/database/index.js",
+    "@entity": "./build/src/database/entity/"
   },
   "keywords": [
     "express",
@@ -44,6 +44,7 @@
     "express": "^4.17.1",
     "fs": "0.0.1-security",
     "helmet": "^4.4.1",
+    "module-alias": "^2.2.2",
     "morgan": "^1.10.0",
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.2",

@@ -17,7 +17,8 @@ class Database {
       password: envString(process.env.DATABASE_PASSWORD!, ""),
       database: envString(process.env.DATABASE_NAME!, "./db.sqlite"),
       entities: [
-        __dirname + "/entity/*.ts"
+        __dirname + "/entity/*.ts",
+        __dirname + "/entity/*.js"
       ],
       synchronize: true,
       logging: false
