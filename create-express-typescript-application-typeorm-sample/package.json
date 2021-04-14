@@ -45,6 +45,7 @@
     "fs": "0.0.1-security",
     "helmet": "^4.4.1",
     "morgan": "^1.10.0",
+    "mysql2": "^2.2.5",
     "reflect-metadata": "^0.1.13",
     "require-json5": "^1.1.0",
     "sqlite3": "^5.0.2",
