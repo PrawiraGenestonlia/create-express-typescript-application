@@ -1,5 +1,7 @@
 import { Connection, createConnection, SimpleConsoleLogger } from "typeorm";
+import dotenv from 'dotenv';
 
+dotenv.config({});
 class Database {
 
   public connection: Connection;
