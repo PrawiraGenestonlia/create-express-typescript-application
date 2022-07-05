@@ -26,55 +26,69 @@ The src/app/sample folder shows how easy it is to create new routes.
 
 Pre-requisite: Node, npm and git are locally installed.
 
+Install this package globally in your environment:
+
 ```sh
-$ Just use 'npx'
-  Or
 $ npm install -g create-express-typescript-application
-$ create-express-typescript-application {project-name-without-spaces}
-# example (plain lightweight) $ create-express-typescript-application {project-name-without-spaces} -t plain
-# example (typeorm lightweight) $ create-express-typescript-application {project-name-without-spaces} -t typeorm
-# example (prisma fullweight) $ create-express-typescript-application {project-name-without-spaces} -t prisma
 ```
+
+Or use `npx` to execute this package without installing it globally:
+
+```sh
+$ npx create-express-typescript-application
+```
+
+## List of Generator Options
+
+```
+Options:
+  -V, --version              output the version number
+  -d, --debug                output extra debugging
+  -t, --template <template>  specify only prisma, plain or typeorm
+  -p, --prisma               define template prisma
+  -y, --typeorm              define template typeorm
+  -h, --help                 display help for command
+```
+
+The `--prisma` option integrates Prisma ORM into any of the lightweight app templates.
 
 ## Quick Start
 
 The quickest way to get started is use npx and pass in the name of the project you want to create.
-It is invalid to exclude project name.
 
-Create the app:
+Create a new Express app with the default `plain` template:
 
 ```bash
-$ npx create-express-typescript-application {project-name-without-spaces}
+$ create-express-typescript-application {project-name-without-spaces}
 ```
 
-Start your express-app in development mode at `http://localhost:8080/`
+Or create a new Express app using a specific template:
+
 ```bash
-$ cd "project name" && npm run dev
-```
-If swagger is included, you can view the swagger file at `http://localhost:8080/docs`
+# plain (lightweight, default)
+$ create-express-typescript-application {project-name-without-spaces} -t plain
 
-Or build your application and serve it.
+# typeorm (lightweight)
+$ create-express-typescript-application {project-name-without-spaces} -t typeorm
+
+# prisma (fullweight)
+$ create-express-typescript-application {project-name-without-spaces} -t prisma
+```
+
+Navigate into the generated folder to work on your new app:
+
 ```bash
-$ cd "project name" && npm run build && npm start
+$ cd {project-name-without-spaces}
 ```
 
-## List of options.
-
-Options:
-  -V, --version      output the version number
-  -d, --debug        output extra debugging
-  -t, --template <type>  specify only prisma or plain or typeorm
-  -p, --prisma       define type prisma
-  -y, --typeorm       define type typeorm
-  -h, --help         display help for command
-
-Prisma options integrates prisma ORM into the lightweight express typescript app.
-
-## Available commands for the server.
+## Development Script Commands
 
 - Run the server in development mode: `npm run dev`.
+  - _with the default port, your app will be accessible at `http://localhost:8080/`._
+  - _if Swagger is included, your API docs will be accessible at `http://localhost:8080/docs`._
 - Build the project for production: `npm run build`.
 - Run the production build: `npm start`.
+  - _note: this requires the app to be built first._
 
 ## License
 
